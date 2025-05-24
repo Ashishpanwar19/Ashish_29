@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ashish Panwar - Portfolio</title>
+  <link rel="icon" href="image/ashish1.jpg" type="image/jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -88,26 +88,12 @@
       font-size: 2.5rem;
       margin-top: 1rem;
       color: var(--dark-color);
-      position: relative;
-      display: inline-block;
     }
 
-    .profile h1::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--primary-color);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.5s ease;
-    }
-
-    .profile:hover h1::after {
-      transform: scaleX(1);
-      transform-origin: left;
+    .profile p {
+      font-size: 1.1rem;
+      color: var(--text-color);
+      margin-top: 0.5rem;
     }
 
     /* Navigation */
@@ -120,62 +106,196 @@
       display: flex;
       justify-content: center;
       list-style: none;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    nav a {
+    nav ul li a {
       text-decoration: none;
-      color: var(--dark-color);
+      color: var(--text-color);
       font-weight: 500;
       padding: 0.5rem 1rem;
-      border-radius: 4px;
+      border-radius: 0.5rem;
       transition: var(--transition);
+      position: relative;
     }
 
-    nav a:hover {
-      background-color: var(--primary-color);
-      color: white;
+    nav ul li a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: var(--transition);
+      transform: translateX(-50%);
     }
 
-    /* About Section */
-    .about {
-      padding: 4rem 0;
-      text-align: center;
+    nav ul li a:hover::before {
+      width: 80%;
     }
 
-    .about h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
+    nav ul li a.active {
       color: var(--primary-color);
+      font-weight: 600;
     }
 
-    .about p {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 1.1rem;
+    nav ul li a.active::before {
+      width: 80%;
     }
 
-    /* Buttons */
-    .buttons {
+    /* Main Content */
+    .main-content {
+      padding: 3rem 0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+
+    .section-title {
       text-align: center;
-      padding: 2rem 0;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--dark-color);
+      position: relative;
     }
 
-    .btn {
-      display: inline-block;
-      background-color: var(--primary-color);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 500;
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* Videos Section */
+    .videos-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .video-item {
+      background: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
       transition: var(--transition);
+    }
+
+    .video-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-thumbnail {
+      height: 180px;
+      background-color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 3rem;
+    }
+
+    .video-info {
+      padding: 1.5rem;
+    }
+
+    .video-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-info .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 0.25rem;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .video-info .btn:hover {
+      background: var(--secondary-color);
+    }
+
+    /* Resume Section */
+    .resume-section {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 0.5rem;
       box-shadow: var(--shadow);
     }
 
-    .btn:hover {
-      background-color: var(--secondary-color);
-      transform: translateY(-2px);
+    .resume-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 2rem;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .resume-btn:hover {
+      background: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Floating elements */
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .floating-element {
+      position: absolute;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+
+    .floating-element:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-element:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      left: 80%;
+      animation-delay: 2s;
+    }
+
+    .floating-element:nth-child(3) {
+      width: 70px;
+      height: 70px;
+      top: 80%;
+      left: 20%;
+      animation-delay: 4s;
     }
 
     /* Animations */
@@ -189,53 +309,134 @@
         transform: translateY(0);
       }
     }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+      100% {
+        transform: translateY(0) rotate(360deg);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .profile h1 {
+        font-size: 2rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .videos-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .profile h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
+    <!-- Floating background elements -->
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+
+    <!-- Header Section -->
     <header>
       <div class="profile">
-        <!-- Updated path with ../ to go up one level -->
-        <img src="../image/ashish1.jpg" alt="Ashish Panwar">
-        <h1></h1>
+        <img src="image/ashish1.jpg" alt="Ashish Panwar" class="animate__animated animate__fadeIn">
+        <h1>Ashish Panwar</h1>
+        <p>Machine Learning Engineer & Web Developer</p>
       </div>
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="services.html">Videos</a></li>
           <li><a href="skills.html">Skills</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <section class="about">
-      <h2>About Me</h2>
-      <p>
-        Machine Learning Engineer | AI/ML Innovator | 
-        Driven by the intersection of code and creativity, I design intelligent systems that solve real-world
-        challenges—like detecting phishing threats and building conversational AI. Equipped with a B.Tech in Computer
-        Science and expertise in deep learning, NLP, and predictive analytics, I bridge raw data with actionable
-        insights. My work prioritizes scalability, whether deploying models into production or optimizing algorithms for
-        efficiency. Passionate about staying ahead of AI trends.
-      </p>
-    </section>
+    <!-- Main Content -->
+    <main class="main-content">
+      <section>
+        <h2 class="section-title">Featured Videos</h2>
+        <div class="videos-container">
+          <div class="video-item">
+            <div class="video-thumbnail">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="video-info">
+              <h3>Ring Theory Introduction</h3>
+              <p>6th Lecture in the series</p>
+              <a href="static/vedious/lecture_6.mp4" class="btn">Watch Now</a>
+            </div>
+          </div>
 
-    <!-- Buttons Section -->
-    <section class="buttons">
-      <!-- Updated path with ../ to go up one level -->
-      <a href="../assert1/Ashish_29.pdf" download class="btn">
-        <i class="fas fa-download"></i> Download Resume
-      </a>
-    </section>
+          <div class="video-item">
+            <div class="video-thumbnail">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="video-info">
+              <h3>Ring Theory Introduction</h3>
+              <p>5th Lecture in the series</p>
+              <a href="static/vedious/lecture_5.mp4" class="btn">Watch Now</a>
+            </div>
+          </div>
+
+          <div class="video-item">
+            <div class="video-thumbnail">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="video-info">
+              <h3>Final Video</h3>
+              <p>Complete course overview</p>
+              <a href="assert/final_vedio.mp4" class="btn">Watch Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2>Download My Resume</h2>
+        <p>Get a complete overview of my skills and experience</p>
+        <a href="assert1/Ashish_29.pdf" download="Ashish_Panwar_Resume.pdf" class="resume-btn">
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+      </section>
+    </main>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       // Smooth scrolling for navigation links
-      $('nav a').on('click', function (e) {
+      $('nav a').on('click', function(e) {
         if (this.hash !== '') {
           e.preventDefault();
           const hash = this.hash;
@@ -247,11 +448,11 @@
 
       // Add animation class when element is in viewport
       function animateOnScroll() {
-        $('.about, .buttons').each(function () {
+        $('.main-content').each(function() {
           const elementPosition = $(this).offset().top;
           const windowHeight = $(window).height();
           const windowPosition = $(window).scrollTop();
-
+          
           if (elementPosition < windowPosition + windowHeight - 100) {
             $(this).addClass('animate__animated animate__fadeInUp');
           }
@@ -261,18 +462,6 @@
       // Run on load and scroll
       animateOnScroll();
       $(window).on('scroll', animateOnScroll);
-
-      // Typing effect for the name
-      const name = "Ashish Panwar";
-      let i = 0;
-      const typingEffect = setInterval(() => {
-        if (i < name.length) {
-          $('.profile h1').text($('.profile h1').text() + name.charAt(i));
-          i++;
-        } else {
-          clearInterval(typingEffect);
-        }
-      }, 150);
     });
   </script>
 </body>
